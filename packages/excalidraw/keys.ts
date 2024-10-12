@@ -89,6 +89,23 @@ export const isArrowKey = (key: string) =>
   key === KEYS.ARROW_DOWN ||
   key === KEYS.ARROW_UP;
 
+export const isUndoKeyEvent = (event: KeyboardEvent | React.KeyboardEvent<Element>) => {
+  console.log(event.code)
+  return (
+    (event.key.toLowerCase() === 'z' || event.key.toLowerCase() === 'я') &&
+    (event.ctrlKey || event.metaKey) &&
+    !event.shiftKey
+  );
+}
+
+const UndoKeys: Record<string, string> = {
+  'en': 'z',
+  'ru': 'я',
+  'fr': 'y',
+  'de': 'z',
+  // Add more languages as needed
+};
+
 export const shouldResizeFromCenter = (event: MouseEvent | KeyboardEvent) =>
   event.altKey;
 

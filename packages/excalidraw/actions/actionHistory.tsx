@@ -5,7 +5,7 @@ import { t } from "../i18n";
 import type { History } from "../history";
 import { HistoryChangedEvent } from "../history";
 import type { AppClassProperties, AppState } from "../types";
-import { KEYS } from "../keys";
+import { KEYS, CODES } from "../keys";
 import { arrayToMap } from "../utils";
 import { isWindows } from "../constants";
 import type { SceneElementsMap } from "../element/types";
@@ -64,7 +64,7 @@ export const createUndoAction: ActionCreator = (history, store) => ({
     ),
   keyTest: (event) =>
     event[KEYS.CTRL_OR_CMD] &&
-    event.key.toLowerCase() === KEYS.Z &&
+    event.code === CODES.Z &&
     !event.shiftKey,
   PanelComponent: ({ updateData, data }) => {
     const { isUndoStackEmpty } = useEmitter<HistoryChangedEvent>(
